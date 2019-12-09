@@ -11,9 +11,11 @@ def index():
 
     if email_address:
         user = db.query(User).filter_by(email=email_address).first()
+        message_log = "loged in"
+        return render_template("index.html", user=user, message_log=message_log)
     else:
         user = None
-    return render_template("index.html", user=user)
+        return render_template("index.html", user=user)
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -38,7 +40,6 @@ def login():
 def result():
     guess = int(request.form.get("guess"))
     email_address = request.cookies.get("email")
-
     user = db.query(User).filter_by(email=email_address).first()
 
     if guess == user.secret_number:

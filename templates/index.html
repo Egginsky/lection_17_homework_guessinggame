@@ -6,6 +6,7 @@
 </head>
 <body>
 {% if user and user.secret_number %}
+<p>{{ message_log }}</p>
     <form method="post" action="/result">
         <input type="text" name="guess" placeholder="Gib eine Zahl ein!">
         <br>
@@ -19,6 +20,7 @@
 
         <button>Submit</button>
     </form>
+
 {% endif %}
 
 </body>
